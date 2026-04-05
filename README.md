@@ -8,6 +8,17 @@ A full-stack application with:
 
 ---
 
+## ✨ Features
+
+* Role-based authentication (Admin, Warehouse, Manager, Branch)
+* Inventory & stock management
+* POS (Point of Sale) system
+* Smart ordering system
+* Reporting & analytics
+* Swagger API documentation
+
+---
+
 ## 📦 Requirements
 
 Make sure you have installed:
@@ -26,7 +37,7 @@ vbworld/
   Backend/       # Spring Boot API
   Frontend/      # Vite React app
   DB/
-    backup.sql   # PostgreSQL backup
+    backup.sql   # PostgreSQL backup (includes schema + data)
   .gitignore
   README.md
 ```
@@ -41,10 +52,10 @@ vbworld/
 createdb vbworld
 ```
 
-### 2. Create User (if not exists)
+### 2. Create User
 
 ```
-CREATE USER vbworld_user WITH PASSWORD 'your_password';
+CREATE USER vbworld_user WITH PASSWORD 'vbworld@2026';
 ALTER DATABASE vbworld OWNER TO vbworld_user;
 ```
 
@@ -53,6 +64,9 @@ ALTER DATABASE vbworld OWNER TO vbworld_user;
 ```
 psql -U vbworld_user -d vbworld -f DB/backup.sql
 ```
+
+> ⚠️ Note: The backup already contains schema and demo data.
+> No additional setup or migrations are required.
 
 ---
 
@@ -155,21 +169,21 @@ ravi@vbworld.in
 * Branch dashboard
 * Smart ordering
 * Order history
-* Customers
+* Customer management
 * POS screens
 
 ---
 
 ## 🔐 Environment Variables (Optional)
 
-Create a `.env` file:
+Create a `.env` file (recommended for future production setup):
 
 ```
 DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=vbworld
 DB_USER=vbworld_user
-DB_PASSWORD=your_password
+DB_PASSWORD=vbworld@2026
 
 JWT_SECRET=your_secret_key
 ```
@@ -212,7 +226,7 @@ Clone → Setup DB → Run backend → Run frontend 🚀
 
 ## 💡 Future Improvements
 
-* Docker setup (1 command run)
+* Docker setup (run everything in 1 command)
 * CI/CD pipeline
 * Production deployment
 * Environment-based config management
